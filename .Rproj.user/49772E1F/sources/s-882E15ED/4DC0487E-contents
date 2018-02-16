@@ -1,6 +1,0 @@
----
-title: "MICB425 portfolio"
-author: "Niknaz Malekafzali (24003148)"
-date: "version `r format(Sys.time(), '%B %d, %Y')`"
-output: html_document
----
