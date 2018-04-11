@@ -41,8 +41,8 @@ plot_bar(physeq_percent, fill="Phylum") +
 
 #Exercise 3
 plot_bar(physeq_percent, fill="Class",  title="Class from 10 to 200 m in Saanich Inlet") + 
-  geom_bar(aes(fill=Phylum), stat="identity") + labs(x="Sample depth", y="percent relative abundance")
-
+  geom_bar(aes(fill=Class), stat="identity") + labs(x="Sample depth", y="percent relative abundance")
+  
 #Faceting
 plot_bar(physeq_percent, fill="Phylum") +
   geom_bar(aes(fill=Phylum), stat="identity") +
@@ -50,7 +50,7 @@ plot_bar(physeq_percent, fill="Phylum") +
 plot_bar(physeq_percent, fill="Phylum") +
   geom_bar(aes(fill=Phylum), stat="identity") +
   facet_wrap(~Phylum, scales="free_y") +
-  theme(legend.position="none")
+  theme(legend.position = "none")
 
 #Exercise 4
 
