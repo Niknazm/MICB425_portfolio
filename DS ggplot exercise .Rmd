@@ -40,10 +40,13 @@ plot_bar(physeq_percent, fill="Phylum") +
   geom_bar(aes(fill=Phylum), stat="identity")
 
 #Exercise 3
-plot_bar(physeq_percent, fill="Class",  title="Class from 10 to 200 m in Saanich Inlet") + 
+physeq_percent = transform_sample_counts(physeq, function(x) 100 * x/sum(x))
+
+plot_bar(physeq_percent, fill="Class",  title="Class from 10-200m 
+in Saanich Inlet") +
   geom_bar(aes(fill=Class), stat="identity") + labs(x="Sample depth", y="percent relative abundance")
   
-#Faceting
+#Faceting notes
 plot_bar(physeq_percent, fill="Phylum") +
   geom_bar(aes(fill=Phylum), stat="identity") +
   facet_wrap(~Phylum)
@@ -53,16 +56,11 @@ plot_bar(physeq_percent, fill="Phylum") +
   theme(legend.position = "none")
 
 #Exercise 4
-
-library(tidyverse)
-library(phyloseq)
 library(dplyr)
-table= metadata
-table= metadata %>%
-  select(Depth_m, O2_uM, PO4_uM, SiO2_uM, NO3_uM, NH4_uM, NO2_uM)
-table_1= table %>% 
-  gather(Nutrients, Concentration, O2_uM, PO4_uM, SiO2_uM, NO3_uM, NH4_uM, NO2_uM)
-ggplot(table_1, aes(x=Depth_m, y=Concentration)) +
+metadata %>%
+  select(Depth_m, O2_uM, PO4_uM, SiO2_uM, NO3_uM, NH4_uM, NO2_uM) %>% 
+  gather(Nutrients, Concentration, O2_uM, PO4_uM, SiO2_uM, NO3_uM, NH4_uM, NO2_uM) %>%
+ggplot(aes(x=Depth_m, y=Concentration)) +
   geom_point() + geom_line() + facet_wrap(~Nutrients, scales="free_y") + 
-  theme(legend.position= "none") 
+  theme(legend.position= "none")
 ```
